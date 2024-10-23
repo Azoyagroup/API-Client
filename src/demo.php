@@ -173,37 +173,25 @@ try {
 
 function print_j($array)
 {
-    // 将数组转换为 JSON 格式
-    $json = json_encode($array);
-
-    // 检查是否有转换错误
+    $json = json_encode($array, JSON_UNESCAPED_UNICODE);
     if ($json === false) {
-        // 处理错误，例如：json_last_error() 可以提供错误信息
         switch (json_last_error()) {
             case JSON_ERROR_NONE:
-                echo ' - No errors';
-                break;
+                return ' - No errors' . "\n";
             case JSON_ERROR_DEPTH:
-                echo ' - Maximum stack depth exceeded';
-                break;
+                return ' - Maximum stack depth exceeded' . "\n";
             case JSON_ERROR_STATE_MISMATCH:
-                echo ' - Underflow or the modes mismatch';
-                break;
+                return ' - Underflow or the modes mismatch' . "\n";
             case JSON_ERROR_CTRL_CHAR:
-                echo ' - Unexpected control character found';
-                break;
+                return ' - Unexpected control character found' . "\n";
             case JSON_ERROR_SYNTAX:
-                echo ' - Syntax error, malformed JSON';
-                break;
+                return ' - Syntax error, malformed JSON' . "\n";
             case JSON_ERROR_UTF8:
-                echo ' - Malformed UTF-8 characters, possibly incorrectly encoded';
-                break;
+                return ' - Malformed UTF-8 characters, possibly incorrectly encoded' . "\n";
             default:
-                echo ' - Unknown error';
-                break;
+                return ' - Unknown error' . "\n";
         }
     } else {
-        // 打印 JSON 字符串
-        echo $json;
+        return $json . "\n";
     }
 }
