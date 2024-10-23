@@ -3,10 +3,9 @@ require 'sdk.php';
 
 use Azoya\SDK\API;
 
-define('TEST_API_URL', 'https://apitest-v2.azoyagroup.com');
+define('TEST_API_URL', 'https://apitest.example.com');
 
 // This is demo!
-$sdk = new API(TEST_API_URL, 'baltini', 'pIFRZVcgcSDwyZhT', 'YRVXxO7yWNDgFCXmilCcc61vSRP0SJqI');
 $sdk = new API(TEST_API_URL, 'exampleProvideCode', 'exampleApiKey', 'exampleApiSecret');
 
 // Get Token
@@ -23,7 +22,7 @@ echo 'Token: ' . $token . "\n";
 $ProductCreateJson = '{
     "items": [
         {
-            "sku": "baltinitest80001",
+            "sku": "exampletest80001",
             "name": "Down jacket for testM / Black0.8kg",
             "price": 3000,
             "special_price": 3000,
@@ -51,7 +50,7 @@ $ProductCreateJson = '{
             ]
         },
         {
-            "sku": "baltinitest80002",
+            "sku": "exampletest80002",
             "name": "Down jacket for testL / Red0.8kg",
             "price": 3100,
             "special_price": 3100,
