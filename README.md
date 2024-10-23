@@ -27,7 +27,7 @@ To authenticate your requests, you will need to use your API key and secret. Her
 require 'vendor/autoload.php';
 
 use Azoya\API\SDK;
-$apiUrl      = 'azoya_api_url'
+$apiUrl      = 'azoya_api_url';
 $provideCode = 'your_provide_code_here';
 $apiKey      = 'your_api_key_here';
 $apiSecret   = 'your_api_secet_here';
