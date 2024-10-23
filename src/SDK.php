@@ -201,13 +201,18 @@ class SDK
         $response = curl_exec($curl);
         $err = curl_error($curl);
 
+        $httpStatusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
         curl_close($curl);
 
-        if ($err) {
-            return ['status' => -500, 'message' => $err];
-        } else {
-            return json_decode($response, true);
+        if ($httpStatusCode != 200){
+            return ['status' => -500, 'message' => 'Response http status:'.$httpStatusCode];
         }
+        if ($err) {
+            return ['status' => -1, 'message' => $err];
+        }
+
+        return json_decode($response, true);
     }
 }
 
