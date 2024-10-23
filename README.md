@@ -17,21 +17,21 @@ composer require azoyagroup/api-sdk
 
 ## Getting Started
 
-Before you begin, you need to have an API key from [Azoya API]. If you don't have one, you can register and get your API key from the [Azoya API] dashboard.
+Before you begin, you need to have an API key and secret from [Azoya]. If you don't have one, you can contact Azoya.
 
 ### Authentication
 
-To authenticate your requests, you will need to use your API key. Here's how you can set it up:
+To authenticate your requests, you will need to use your API key and secret. Here's how you can set it up:
 
 ```php
 require 'vendor/autoload.php';
 
-use Azoya\SDK\Api;
-$apiHost = 'api_host'
+use Azoya\SDK\sdk;
+$apiUrl      = 'azoya_api_url'
 $provideCode = 'your_provide_code_here';
-$apiKey = 'your_api_key_here';
-$apiSecret = 'your_api_secet_here';
-$sdk = new Api($apiHost,$provideCode,$apiKey,$apiSecret);
+$apiKey      = 'your_api_key_here';
+$apiSecret   = 'your_api_secet_here';
+$sdk = new sdk($apiUrl,$provideCode,$apiKey,$apiSecret);
 ```
 
 ### Making API Requests
@@ -51,8 +51,11 @@ Here are some examples of common tasks you can perform with the SDK:
 
 ```php
 $params = [
-    'name' => 'Example product Name',
-    // other required fields
+    'items' => [{
+         "sku": "test sku",
+         "name": "test name",
+         // other required fields
+    }],
 ];
 
 try {
@@ -77,18 +80,6 @@ try {
 }
 ```
 
-### Handling Errors
-
-The SDK will throw exceptions for most errors. You can handle these in a try-catch block:
-
-```php
-try {
-    // Make an API request that might fail
-} catch (Exception $e) {
-    // Handle other errors
-    echo "Api Error: " . $e->getMessage();
-}
-```
 
 ## Contributing
 

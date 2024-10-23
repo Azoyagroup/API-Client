@@ -1,8 +1,8 @@
 <?php
 
-namespace Azoya\SDK;
+namespace Azoya\API;
 
-class API
+class SDK
 {
     protected $providerCode;
     protected $apiBaseUrl;

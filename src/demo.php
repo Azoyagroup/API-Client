@@ -1,21 +1,22 @@
 <?php
 require 'sdk.php';
 
-use Azoya\SDK\API;
+use Azoya\API\SDK;
 
 define('TEST_API_URL', 'https://apitest.example.com');
 
 // This is demo!
-$sdk = new API(TEST_API_URL, 'exampleProvideCode', 'exampleApiKey', 'exampleApiSecret');
+$sdk = new SDK(TEST_API_URL, 'exampleProvideCode', 'exampleApiKey', 'exampleApiSecret');
 
 // Get Token
-$tokenResponse = $sdk->getToken();
-if (isset($tokenResponse["status"]) && $tokenResponse["status"] != 0) {
-    echo 'Get Token err: ' . $tokenResponse["message"] . "\n";
+try {
+    $tokenResponse = $sdk->getToken();
+    $token = $tokenResponse["token"];
+    echo 'Token: ' . $token . "\n";
+} catch (Exception $e) {
+    echo "Error Get Token: " . $e->getMessage();
     return;
 }
-$token = $tokenResponse["token"];
-echo 'Token: ' . $token . "\n";
 
 
 // Product Create
@@ -75,9 +76,14 @@ $ProductCreateJson = '{
         }
     ]
 }';
-$productCreateParams = json_decode($ProductCreateJson, true);
-$productCreateResponse = $sdk->ProductCreate($token, $productCreateParams);
-echo 'ProductCreate Response:' . print_r($productCreateResponse, true) . "\n";
+try {
+    $productCreateParams = json_decode($ProductCreateJson, true);
+    $productCreateResponse = $sdk->ProductCreate($token, $productCreateParams);
+    echo 'ProductCreate Response:' . print_r($productCreateResponse, true) . "\n";
+} catch (Exception $e) {
+    echo "Error Product Create: " . $e->getMessage();
+    return;
+}
 
 
 // Order Search
@@ -86,5 +92,10 @@ $orderSearchParamsJson = '{
   "per_count": 50
 }';
 $orderSearchParams = json_decode($orderSearchParamsJson, true);
-$orderSearchResponse = $sdk->OrderSearch($token, $orderSearchParams);
-echo 'orderSearch Response:' . print_r($orderSearchResponse, true) . "\n";
+try {
+    $orderSearchResponse = $sdk->OrderSearch($token, $orderSearchParams);
+    echo 'orderSearch Response:' . print_r($orderSearchResponse, true) . "\n";
+} catch (Exception $e) {
+    echo "Error Order Search: " . $e->getMessage();
+    return;
+}
