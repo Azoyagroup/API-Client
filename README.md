@@ -31,7 +31,7 @@ $apiUrl      = 'azoya_api_url'
 $provideCode = 'your_provide_code_here';
 $apiKey      = 'your_api_key_here';
 $apiSecret   = 'your_api_secet_here';
-$sdk = new sdk($apiUrl,$provideCode,$apiKey,$apiSecret);
+$sdk = new SDK($apiUrl,$provideCode,$apiKey,$apiSecret);
 ```
 
 ### Making API Requests
