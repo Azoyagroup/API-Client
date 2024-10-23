@@ -1,0 +1,11 @@
+{
+	"name": "azoyagroup/api-sdk",
+	"description": "A PHP SDK for  with the Azoya API service.",
+	"type": "library",
+	"license": "MIT",
+	"autoload": {
+		"psr-4": {
+			"Azoya\\": "src/"
+		}
+	}
+}
