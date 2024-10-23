@@ -181,7 +181,7 @@ class SDK
         return $response;
     }
 
-    // 发送 HTTP 请求
+    // Send HTTP Request
     protected function makeRequest($url, $method, $data = [], $headers = [])
     {
         $curl = curl_init();
