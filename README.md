@@ -6,7 +6,6 @@ Welcome to the [Azoya API] PHP SDK. This SDK allows you to easily integrate [Azo
 
 - PHP 5.6 or later
 - [Composer](https://getcomposer.org/)
-- [Guzzle HTTP Client](https://docs.guzzlephp.org/en/stable/) (optional, but recommended for making HTTP requests)
 
 ## Installation
 
@@ -43,12 +42,6 @@ Here's an example of how to make a simple API request using the SDK:
 $response = $sdk->getToken();
 print_r($response);
 ```
-
-## Documentation
-
-For a comprehensive list of methods and examples, check out the [Azoya API] PHP SDK documentation:
-
-[Your Documentation Link]
 
 ## Examples
 
