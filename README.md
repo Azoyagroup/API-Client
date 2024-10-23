@@ -26,7 +26,7 @@ To authenticate your requests, you will need to use your API key and secret. Her
 ```php
 require 'vendor/autoload.php';
 
-use Azoya\SDK\sdk;
+use Azoya\API\SDK;
 $apiUrl      = 'azoya_api_url'
 $provideCode = 'your_provide_code_here';
 $apiKey      = 'your_api_key_here';
@@ -80,12 +80,6 @@ try {
 }
 ```
 
-
-## Contributing
-
-We welcome contributions to the [Azoya API] PHP SDK. Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for instructions on how to get involved.
-
 ## License
-
 The [Azoya API] PHP SDK is licensed under the [MIT License](LICENSE).
 
