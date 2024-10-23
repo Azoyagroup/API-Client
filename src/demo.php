@@ -3,7 +3,7 @@ require 'sdk.php';
 
 use Azoya\API\SDK;
 
-define('TEST_API_URL', 'https://apitest-v2.example.com');
+define('TEST_API_URL', 'https://example.com');
 
 // This is demo!!!
 $sdk = new SDK(TEST_API_URL, 'exampleProviderCode', 'exampleApiKey', 'exampleApiSecret');
