@@ -79,7 +79,7 @@ $ProductCreateJson = '{
 try {
     $productCreateParams = json_decode($ProductCreateJson, true);
     $productCreateResponse = $sdk->ProductCreate($token, $productCreateParams);
-    echo 'ProductCreate Response:' . print_r($productCreateResponse, true) . "\n";
+    echo 'ProductCreate Response:' . print_j($productCreateResponse) . "\n";
 } catch (Exception $e) {
     echo "Error Product Create: " . $e->getMessage();
     return;
@@ -94,7 +94,7 @@ $orderSearchParamsJson = '{
 $orderSearchParams = json_decode($orderSearchParamsJson, true);
 try {
     $orderSearchResponse = $sdk->OrderSearch($token, $orderSearchParams);
-    echo 'OrderSearch Response:' . print_r($orderSearchResponse, true) . "\n";
+    echo 'OrderSearch Response:' . print_j($orderSearchResponse) . "\n";
 } catch (Exception $e) {
     echo "Error Order Search: " . $e->getMessage();
     return;
@@ -111,7 +111,7 @@ $orderSynchronizeParamsJson = '{
 $orderSynchronizeParams = json_decode($orderSynchronizeParamsJson, true);
 try {
     $orderSynchronizeResponse = $sdk->OrderSynchronize($token, $orderSynchronizeParams);
-    echo 'OrderSynchronize Response:' . print_r($orderSynchronizeResponse, true) . "\n";
+    echo 'OrderSynchronize Response:' . print_j($orderSynchronizeResponse) . "\n";
 } catch (Exception $e) {
     echo "Error Order Synchronize: " . $e->getMessage();
     return;
@@ -130,7 +130,7 @@ $orderCancelParamsJson = '{
 $orderCancelParams = json_decode($orderCancelParamsJson, true);
 try {
     $orderCancelResponse = $sdk->OrderCancel($token, $orderCancelParams);
-    echo 'OrderCancel Response:' . print_r($orderCancelResponse, true) . "\n";
+    echo 'OrderCancel Response:' . print_j($orderCancelResponse) . "\n";
 } catch (Exception $e) {
     echo "Error Order Cancel: " . $e->getMessage();
     return;
@@ -148,7 +148,7 @@ $shipmentSynchronizeParamsJson = '{
 $shipmentSynchronizeParams = json_decode($shipmentSynchronizeParamsJson, true);
 try {
     $shipmentSynchronizeResponse = $sdk->ShipmentSynchronize($token, $shipmentSynchronizeParams);
-    echo 'ShipmentSynchronize Response:' . print_r($shipmentSynchronizeResponse, true) . "\n";
+    echo 'ShipmentSynchronize Response:' . print_j($shipmentSynchronizeResponse) . "\n";
 } catch (Exception $e) {
     echo "Error Shipment Synchronize: " . $e->getMessage();
     return;
@@ -164,8 +164,46 @@ $shipmentNoticeParamsJson = '{
 $shipmentNoticeParams = json_decode($shipmentNoticeParamsJson, true);
 try {
     $shipmentNoticeResponse = $sdk->ShipmentNotice($token, $shipmentNoticeParams);
-    echo 'ShipmentNotice Response:' . print_r($shipmentNoticeResponse, true) . "\n";
+    echo 'ShipmentNotice Response:' . print_j($shipmentNoticeResponse) . "\n";
 } catch (Exception $e) {
     echo "Error Shipment Notice: " . $e->getMessage();
     return;
+}
+
+
+function print_j($array)
+{
+    // 将数组转换为 JSON 格式
+    $json = json_encode($array);
+
+    // 检查是否有转换错误
+    if ($json === false) {
+        // 处理错误，例如：json_last_error() 可以提供错误信息
+        switch (json_last_error()) {
+            case JSON_ERROR_NONE:
+                echo ' - No errors';
+                break;
+            case JSON_ERROR_DEPTH:
+                echo ' - Maximum stack depth exceeded';
+                break;
+            case JSON_ERROR_STATE_MISMATCH:
+                echo ' - Underflow or the modes mismatch';
+                break;
+            case JSON_ERROR_CTRL_CHAR:
+                echo ' - Unexpected control character found';
+                break;
+            case JSON_ERROR_SYNTAX:
+                echo ' - Syntax error, malformed JSON';
+                break;
+            case JSON_ERROR_UTF8:
+                echo ' - Malformed UTF-8 characters, possibly incorrectly encoded';
+                break;
+            default:
+                echo ' - Unknown error';
+                break;
+        }
+    } else {
+        // 打印 JSON 字符串
+        echo $json;
+    }
 }

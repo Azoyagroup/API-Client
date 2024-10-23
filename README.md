@@ -40,7 +40,8 @@ Here's an example of how to make a simple API request using the SDK:
 
 ```php
 $response = $sdk->getToken();
-print_r($response);
+print_j($response);
+$token = $response["token"];
 ```
 
 ## Examples
